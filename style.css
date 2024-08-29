@@ -1,0 +1,1136 @@
+@font-face {
+    font-family: MedNHD;
+    src: url(./NeueHaasDisplay-Medium.ttf);
+}
+
+@font-face {
+    font-family: RomanNHD;
+    src: url(./NeueHaasDisplay-Roman.ttf);
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    height: 100%;
+    width: 100%;
+}
+
+/* here we have not given height and width to the parent of page1 i.e. to the main div, because of which the child(page1)
+will nort be able to take te height in % because when we give height and width in % that % is based on the parent, so insted
+giving height in % we will give it in VH because in VH it will be dependent on Screen not the parent.
+Now, why did we not give height to parent(main div)?? : because we will be using LOCOMOTIVE CSS for smooth scrolling. */
+
+.main{
+    /* background-color: black; */
+    z-index: 10;
+    position: relative;
+}
+
+
+.page1{
+    /* height: 100%; */
+    /* height: 100vh; */
+    min-height: 100vh;
+    width: 100%;
+    background-color: #EFEAE3;
+    position: relative;
+    padding: 0 2vw;
+}
+
+nav{
+    /* height: 60px; */
+    width: 100%;
+    padding: 2vw 0;
+    /* background-color: aquamarine; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: romannhd;
+    position: relative;
+    z-index: 100;
+}
+
+.nav-part2{
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+}
+
+.nav-part2 h4{
+    padding: 8px 20px;
+    border: 1px solid rgba(145, 145, 145, 0.452);
+    border-radius: 45px;
+    font-weight: 200;
+    color: rgba(0, 0, 0, 0.644);
+    font-size: 15px;
+    position: relative;
+    /* with  position: relative; parent ek boundry bana leta hai and ab iske bahar nahi jaare iske childs */
+    transition: all ease 0.4s;
+    overflow: hidden;
+    
+}
+
+.nav-part2 h4::after{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    left: 0;
+    bottom: -100%;
+    border-radius: 50%;
+    transition: all ease 0.4s;
+}
+
+.nav-part2 h4:hover::after{
+    bottom: 0;
+    border-radius: 0;
+}
+
+.nav-part2 h4 a{
+    text-decoration: none;
+    color: black;
+    position: relative;
+    z-index: 9;
+}
+
+.nav-part2 h4:hover a{
+    color: white;
+}
+
+nav h3{
+    display: none;
+    /* h3 is used for responsiveness so in landscape mode it is not required */
+}
+
+.center{
+    height: 77vh;
+    width: 100%;
+    /* background-color: tomato; */
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.267);
+    padding-bottom: 3vw;
+}
+
+.center .left h3{
+    width: 25vw;
+    font-size: 1.8vw;
+    /* font-weight: 700; */
+    /* letter-spacing: -1px; */
+    line-height: 1.9vw;
+    font-family: medNHD;
+}
+
+.center .right h1{
+    font-size: 11vw;
+    line-height: 8.5vw;
+    text-align: right;
+    font-family: mednhd;
+}
+
+.page1 video{
+    width: 100%;
+    border-radius: 20px;
+    margin-top: 4vw;
+    position: relative;
+}
+
+
+.hero-shape{
+    position: absolute;
+    width: 46vw;
+    height: 36vw;
+    /* background-color: #fe320a; */
+    /* border-radius: 50%; */
+    right: 0;
+    top: 80vh;
+    
+}
+
+.hero-1{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: #fe320a;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    filter: blur(20px);
+}
+
+.hero-2{
+    height: 30vw;
+    width: 30vw;
+    position: absolute;
+    background: linear-gradient(#fe320a,#fe2f0a);
+    border-radius: 50%;
+    filter: blur(20px);
+    animation-name: anime2;
+    animation-duration: 3s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.hero-3{
+    height: 30vw;
+    width: 30vw;
+    position: absolute;
+    background: linear-gradient(#fe320a,#fe2f0a);
+    border-radius: 50%;
+    filter: blur(25px);
+    animation-name: anime1;
+    animation-duration: 3s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes anime1 {
+    from{
+        transform: translate(95%, -4.5%);
+    }
+
+    to{
+        transform: translate(0%, 10%);
+    }
+}
+
+@keyframes anime2 {
+    from{
+        transform: translate(5%, -5%);
+    }
+
+    to{
+        transform: translate(-20%, 20%);
+    }
+}
+
+.page2{
+    min-height: 100vh;
+    width: 100%;
+    background-color: #EFEAE3;
+    font-family: mednhd;
+    padding: 8vw 0;
+    position: relative;
+}
+
+.moving-text{
+    white-space: nowrap;
+    overflow-x: auto;
+    /* with this we will have a scroller horizontally */
+}
+
+.moving-text::-webkit-scrollbar{
+    display: none;
+    /* with the .moving-text::-webkit-scrollbar we can hide the scroll bar we applide above */
+}
+
+.con{
+    white-space: nowrap;
+    /* all children will come in same line(row) */
+    display: inline-block;
+    animation-name: move;
+    animation-duration: 11s;
+    animation-iteration-count: infinite;
+    /* should run infinite in the loop */
+    animation-timing-function: linear;
+    /* it should go consistantly, not to slow not to fast */
+}
+
+.moving-text .con h1{
+    font-size: 9vw;
+    display: inline-block;
+    /* with this the content will take only that much size which is the actual size of the content */
+}
+
+.gola{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: #fe2f0a;
+    display: inline-block;
+    margin: 0.5vw 1vw;
+}
+
+
+
+@keyframes move {
+    from{
+        transform: translateX(0);
+    }
+
+    to{
+        transform: translateX(-100%);
+    }
+}
+
+.page2-bottom{
+    height: 80vh;
+    width: 100%;
+    /* background-color: aquamarine; */
+    padding: 5vw;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 9;
+}
+
+.page2-bottom h1{
+    font-size: 4.2vw;
+    font-family: mednhd;
+    width: 60%;
+    line-height: 4vw;
+    letter-spacing: -1px;
+}
+
+.bottom-part2{
+    width: 20%;
+    height: 50vw;
+    /* background-color: aqua; */
+    margin-top: 24%;
+}
+
+.bottom-part2 img{
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 15vw;
+}
+
+.bottom-part2 p{
+    font-family: romannhd;
+    font-size: 1.1vw;
+    margin-top: 0.5vw;
+}
+
+.page2 .gooey{
+    height: 80vh;
+    width: 80vh;
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(to top right,#fe320a,#fd660f);
+    top: 52%;
+    left: 20%;
+    filter: blur(20px);
+    animation-name: gooey;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+    /* with ease in out the starting and ending of the animation will be smooth */
+}
+
+
+@keyframes gooey {
+    from{
+        filter: blur(20px);
+        transform: translate(10%, -10%) skew(0);
+        /* frot and up, aage and uppar ki side movement */
+    }
+    to{
+        filter: blur(30px);
+        transform: translate(-10%, 10%) skew(-12deg);
+        /* skew helps to change the shape of a running animation */
+    }
+    
+}
+
+.fp{
+    height: 1.5vw;
+    width: 100%;
+    /* background-color: gray; */
+    display: flex;
+    padding: 0 2.2vw;
+    margin-bottom: 60px;
+    position: relative;
+}
+
+.fp .both{
+    display: flex;
+    position: absolute;
+}
+
+.golu{
+    height: 1vw;
+    width: 1vw;
+    border-radius: 50%;
+    background-color: #fe2f0a;
+    /* display: inline-block; */
+    margin-right: 0.4vw;
+    margin-top: 0.2vw;
+}
+
+.fp .both h5{
+    font-size: 1.2vw;
+    font-family: romannhd;
+    display: inline-block;
+    font-weight: 100;
+}
+
+
+.page3{
+    min-height: 100vh;
+    width: 100%;
+    background-color: #EFEAE3;
+    /* padding: 2vw 2vw; */
+    padding-top: 2vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    display: inline-block;
+}
+
+
+.elem{
+    height: 110px;
+    width: 100%;
+    /* border-top: 1px solid #000; */
+    border-bottom: 0.8px solid #b6b6b6d7;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 2vw;
+    font-family: mednhd;
+    overflow: hidden;
+}
+
+.elem h2{
+    font-size: 3vw;
+    position: relative;
+    z-index: 9;
+    margin-right: 60vw;
+}
+
+
+
+.elem .overlay{
+    height: 100%;
+    width: 100%;
+    background-color: #FF9831;
+    position: absolute;
+    left: 0;
+    top: -100%;
+    transition: all ease 0.25s;
+}
+
+.elem:hover .overlay{
+    top: 0;
+}
+
+
+.fixed-media{
+    height: 30vw;
+    width: 25vw;
+    /* background-color: red; */
+    /* filter: blur(0.5px); */
+    position: fixed;
+    border-radius: 15px;
+    z-index: 99;
+    top: 18%;
+    left: 50%;
+    display: none;
+    background-size: cover;
+    background-position: center;
+}
+
+
+.page4{
+    height: 70vh;
+    width: 100%;
+    background-color: #EFEAE3;
+    padding: 10vw 2vw;
+}
+
+/* :::::::::::::::::::::::::::::::::: SWIPER :::::::::::::::::::::::::::: */
+
+.swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-slide {
+    /* text-align: center;
+    font-size: 18px; */
+    /* background: #fff; */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    width: 42%;
+    border-left: 1px solid #c0c0c0;
+    padding: 0 1vw;
+  }
+
+
+  .swiper-slide img{
+    padding: 0 2vw;
+
+  }
+  .swiper-slide h5{
+    padding: 1.5vw 2vw;
+    font-family: romannhd;
+    font-weight: lighter;
+    font-size: 15.5px;
+  }
+
+
+.page5{
+    height: 110vh;
+    width: 100%;
+}
+
+footer{
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    background-color: black;
+    color: white;
+    z-index: 9;
+    display: flex;
+    /* align-items: flex-end; */
+    bottom: 0;
+    justify-content: flex-end;
+    flex-direction: column;
+    padding: 1vw 3vw;
+}
+
+.footer-div{
+    height: 20vh;
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5vw;
+    z-index: 9;
+    margin-bottom: 100px;
+}
+
+.fdleft h3{
+    font-size: 2.2vw;
+    font-family: mednhd;
+    letter-spacing: -1px;
+    
+}
+
+.fdright{
+    z-index: 10;
+}
+
+.fdright h5{
+    font-size: 1.5vw;
+    font-family: romannhd;
+    font-weight: 100;
+    margin-bottom: 40px;
+}
+
+
+.fdright .fdrbottom h6{
+    font-size: 1.20vw;
+    font-family: romannhd;
+    font-weight: 100;
+    color: rgba(190, 190, 190, 0.863);
+}
+
+.fdright .fdrbottom h6 span{
+    margin-left: 200px;
+    color: white;
+}
+
+.fdright .fdrbottom .line{
+    border-top: 1px solid rgba(153, 153, 153, 0.836);
+    margin-top: 10px;
+}
+
+
+footer h1{
+    font-size: 23vw;
+    font-family: mednhd;
+    /* background-color: aquamarine; */
+    letter-spacing: -4px;
+    line-height: 18.5vw;
+}
+
+footer .footer-bottom{
+    border-bottom: 1px solid rgb(99, 99, 99);
+    margin-bottom: 25px;
+}
+
+
+.full-scr{
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.384);
+    position: fixed;
+    z-index: 99;
+    top: -100%;
+    /* this means that the div is above the screen i.e. -100% */
+    transition: all ease 0.6s;
+}
+
+.full-scr .div1{
+    height: 40%;
+    width: 100%;
+    background-color: #EFEAE3;
+    /* background-color: #fe320a; */
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: end;
+}
+
+.full-scr .div1 h3{
+    color: black;
+    font-family: mednhd;
+    font-size: 9vw;
+    padding: 10px 12px;
+    font-weight: bolder;
+    text-align: right;
+}
+
+
+
+.footer-hero-shape{
+    height: 95vh;
+    width: 95vh;
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(to top right,#fe320a,#fd660f);
+    top: -20%;
+    left: 10%;
+    /* filter: blur(90px); */
+    animation-name: footerHeroShape;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes footerHeroShape {
+    from{
+        filter: blur(50px);
+        transform: translate(80%, 0%) skew(0);
+        /* frot and up, aage and uppar ki side movement */
+    }
+    to{
+        filter: blur(60px);
+        transform: translate(-10%, 10%) skew(-15deg);
+        /* skew helps to change the shape of a running animation */
+    }
+    
+}
+
+/* :::::::::::::Starting Website LOADER:::::::::: */
+
+.loader{
+    height: 100%;
+    width: 100%;
+    background-color: #000;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    transition: all ease 0.7s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader h1{
+    color: transparent;
+    /* this is done to the text so that the text can have the color as background color in the later stages. */
+    font-size: 4vw;
+    /* font-family: mednhd; */
+    font-family: monospace;
+    background: linear-gradient(to right, #FF9831, white, orangered, green);
+    -webkit-background-clip: text;
+    /* the above is used to give the text the same color as the background as the text itself is written in the same color */
+    position: absolute;
+    opacity: 0;
+    animation-name: load;
+    animation-duration: 1s;
+    animation-delay: 1s;
+    animation-timing-function: linear;
+}
+
+.loader h1:nth-child(2){
+    animation-delay: 2s;
+}
+/* in the above nth-child section, nth-child is a property with with we can trigger the child which we want to work on
+- this we do by giving the position at which the child is within the brackets after nth-child() and then in the body
+we write what we want it to do. */
+
+.loader h1:nth-child(3){
+    animation-delay: 3s;
+}
+
+@keyframes load {
+
+    0%{
+        opacity: 0;
+    }
+
+    10%{
+        opacity: 1;
+    }
+
+    90%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+    
+}
+
+
+
+
+/* :::::::::::::::::RESPONSIVE:::::::::::: */
+
+            /* :::::::::::::::::::::::Starting LOADER Responsive::::::::::::::::::::::::::: */
+
+
+@media(max-width: 500px) {
+    .loader h1{
+        font-size: 10vw;
+    }
+}
+
+/* :::::::::::::::::::::further RESPONSIVENESS::::::::::::::::::::::::::::::: */
+
+@media (max-width:500px){
+
+    .page1{
+        min-height: 100vh;
+        width: 100vw;
+        padding: 0 0vw;
+    }
+    
+    nav{
+        height: 12vw;
+        padding: 10vw 5vw;
+        background-color: #EFEAE3;
+    }
+
+    nav img{
+        height: 8vh;
+        transition: all ease 0.38s;
+    }
+    
+    .nav-part2{
+        display: none;
+    }
+    
+    nav h3{
+        display: block;
+        /* here h3 is required in responsive website because of that desplay is BLOCK meaning the h3's content will be
+        visible here */
+        font-family: romannhd;
+        padding: 2vw 5vw;
+        border: 1px solid rgba(145, 145, 145, 0.452);
+        border-radius: 50px;
+        font-size: 4.2vw;
+        font-weight: 200;
+    }
+
+
+    .center{
+        height: 70vh;
+        width: 100%;
+        /* background-color: tomato; */
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.267);
+        padding: 7vw 5vw;
+        padding-bottom: 10vw;
+        flex-direction: column-reverse;
+        position: relative;
+        z-index: 9;
+    }
+    
+    .center .left h3{
+        width: 80%;
+        font-size: 5.7vw;
+        /* font-weight: 700; */
+        /* letter-spacing: -1px; */
+        line-height: 6vw;
+        font-family: medNHD;
+    }
+    
+    .center .right h1{
+        font-size: 14vw;
+        line-height: 12vw;
+        text-align: right;
+        font-family: mednhd;
+    }
+    
+    .page1 video{
+        width: 92%;
+        object-fit: cover;
+        object-position: center;
+        height: 70vh;
+        border-radius: 12px;
+        margin-top: 4vw;
+        position: relative;
+        margin-left: 4%;
+    }
+    
+    
+    .page2{
+        min-height: 140vh;
+        width: 100%;
+        background-color: #EFEAE3;
+        font-family: mednhd;
+        padding: 8vw 0;
+        position: relative;
+    }
+    
+    .moving-text{
+        white-space: nowrap;
+        overflow-x: auto;
+        /* with this we will have a scroller horizontally */
+    }
+    
+    .moving-text::-webkit-scrollbar{
+        display: none;
+        /* with the .moving-text::-webkit-scrollbar we can hide the scroll bar we applide above */
+    }
+    
+    .con{
+        white-space: nowrap;
+        /* all children will come in same line(row) */
+        display: inline-block;
+        animation-name: move;
+        animation-duration: 11s;
+        animation-iteration-count: infinite;
+        /* should run infinite in the loop */
+        animation-timing-function: linear;
+        /* it should go consistantly, not to slow not to fast */
+    }
+    
+    .moving-text .con h1{
+        font-size: 14vw;
+        display: inline-block;
+        /* with this the content will take only that much size which is the actual size of the content */
+    }
+    
+    .gola{
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        background-color: #fe2f0a;
+        display: inline-block;
+        margin: 1vw 1vw;
+    }
+
+    .page2-bottom{
+        min-height: 80vh;
+        width: 100%;
+        /* background-color: aquamarine; */
+        padding: 2vw 4vw;
+        justify-content: space-between;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+        z-index: 9;
+        margin-top: 5vw;
+    }
+    
+    .page2-bottom h1{
+        font-size: 9vw;
+        font-family: mednhd;
+        width: 90%;
+        line-height: 9vw;
+        letter-spacing: -0.5px;
+    }
+    
+    .bottom-part2{
+        width: 80%;
+        height: 50vh;
+        /* background-color: red; */   
+        position: fixed;
+        margin-top: 50vh;
+    }
+    
+    .bottom-part2 img{
+        width: 100%;
+        border-radius: 10px;
+    }
+    
+    .bottom-part2 p{
+        font-family: romannhd;
+        font-size: 3.5vw;
+        /* margin-top: 2vw; */
+    }
+    
+    .page2 .gooey{
+        height: 37vh;
+        width: 37vh;
+        position: absolute;
+        border-radius: 50%;
+        background: linear-gradient(to top right,#fe320a,#fd660f);
+        top: 52%;
+        left: 20%;
+        filter: blur(20px);
+        animation-name: gooey;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        animation-timing-function: ease-in-out;
+        /* with ease in out the starting and ending of the animation will be smooth */
+    }
+
+
+
+    .page3 .fp{
+        height: 20%;
+        width: 50%;
+        /* background-color: gray; */
+        display: flex;
+        margin-top: 10vw;
+        /* padding-top: 50px; */
+        /* margin-bottom: 60px; */
+        position: relative;
+    
+    }
+    
+    .fp .both{
+        /* display: flex; */
+        position: absolute;
+        bottom: 50%;
+    }
+    
+    .fp .both .golu{
+        height: 3vw;
+        width: 3vw;
+        border-radius: 50%;
+        background-color: #fe2f0a;
+        /* display: inline-block; */
+        margin-right: 1vw;
+        margin-top: 0.1vw;
+    }
+    
+    .fp .both h5{
+        font-size: 3vw;
+        font-family: romannhd;
+        display: inline-block;
+        font-weight: 100;
+    }
+
+    
+    
+    .page3{
+        min-height: 100vh;
+        width: 100%;
+        /* background-color: #EFEAE3; */
+        /* background-color: aqua; */
+        /* padding: 2vw 2vw; */
+        padding-top: 2vw;
+        padding-left: 1vw;
+        padding-right: 1vw;
+        display: inline-block;
+    }
+    
+    
+    .elem{
+        height: 60px;
+        width: 100%;
+        /* border-top: 1px solid #000; */
+        border-bottom: 0.8px solid #b6b6b6d7;
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: 0 2vw;
+        font-family: mednhd;
+        overflow: hidden;
+    }
+    
+    .elem h2{
+        font-size: 4.5vw;
+        position: relative;
+        z-index: 9;
+        margin-right: 35vw;
+    }
+    
+    
+    
+    .elem .overlay{
+        height: 100%;
+        width: 100%;
+        background-color: #FF9831;
+        position: absolute;
+        left: 0;
+        top: -100%;
+        transition: all ease 0.25s;
+    }
+    
+    .elem:hover .overlay{
+        top: 0;
+    }
+    
+    
+    .fixed-media{
+        height: 60vw;
+        width: 40vw;
+        /* background-color: red; */
+        /* filter: blur(0.5px); */
+        position: fixed;
+        border-radius: 15px;
+        z-index: 99;
+        top: 18%;
+        left: 55%;
+        display: none;
+        background-size: cover;
+        background-position: center;
+    }  
+    
+   
+    
+   
+    .page4{
+        height: 75vh;
+        width: 100%;
+        background-color: #EFEAE3;
+        padding: 10vw 2vw;
+    }
+    
+    /* :::::::::::::::::::::::::::::::::: SWIPER :::::::::::::::::::::::::::: */
+    
+    .swiper {
+        width: 100%;
+        height: 100%;
+      }
+    
+      .swiper-slide h5{
+        padding: 1.2vw 1.5vw;
+        font-family: romannhd;
+        font-weight: lighter;
+        font-size: 15px;
+      }
+
+
+
+
+    .page5{
+        height: 110vh;
+        width: 100%;
+    }
+    
+    footer{
+        position: fixed;
+        height: 100vh;
+        width: 100%;
+        background-color: black;
+        color: white;
+        z-index: 9;
+        display: flex;
+        /* align-items: flex-end; */
+        bottom: 0;
+        justify-content: flex-end;
+        flex-direction: column;
+        padding: 1vw 3vw;
+    }
+    
+    .footer-div{
+        height: 25vh;
+        width: 100%;
+        /* background-color: red; */
+        /* display: flex; */
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 6vw;
+        z-index: 9;
+        /* margin-bottom: 100px; */
+    }
+    
+    .fdleft h3{
+        font-size: 6vw;
+        font-family: mednhd;
+        letter-spacing: -1px;
+        
+    }
+    
+    .fdright{
+        z-index: 10;
+    }
+    
+    .fdright h5{
+        font-size: 3vw;
+        font-family: romannhd;
+        font-weight: 100;
+        /* margin-bottom: 40px; */
+    }
+    
+    
+    .fdright .fdrbottom h6{
+        font-size: 2.5vw;
+        font-family: romannhd;
+        font-weight: 100;
+        color: rgba(190, 190, 190, 0.863);
+    }
+    
+    .fdright .fdrbottom h6 span{
+        margin-left: 100px;
+        color: white;
+    }
+    
+    .fdright .fdrbottom .line{
+        border-top: 1px solid rgba(153, 153, 153, 0.836);
+        margin-top: 8px;
+    }
+    
+    
+    footer h1{
+        font-size: 23vw;
+        font-family: mednhd;
+        /* background-color: aquamarine; */
+        letter-spacing: -4px;
+        line-height: 30vw;
+    }
+    
+    footer .footer-bottom{
+        border-bottom: 1px solid rgb(99, 99, 99);
+        margin-bottom: 25px;
+        margin-top: 8px;
+    }
+
+
+    .footer-hero-shape{
+        height: 70vh;
+        width: 70vh;
+        position: absolute;
+        border-radius: 50%;
+        background: linear-gradient(to top right,#fe320a,#fd660f);
+        top: -1%;
+        left: 10%;
+        /* filter: blur(90px); */
+        animation-name: footerHeroShape;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        animation-timing-function: ease-in-out;
+    }
+    
+    @keyframes footerHeroShape {
+        from{
+            filter: blur(50px);
+            transform: translate(80%, 0%) skew(0);
+            /* frot and up, aage and uppar ki side movement */
+        }
+        to{
+            filter: blur(60px);
+            transform: translate(-10%, 10%) skew(-15deg);
+            /* skew helps to change the shape of a running animation */
+        }
+        
+    }
+
+}
